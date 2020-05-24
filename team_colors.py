@@ -1,0 +1,10 @@
+TEAM_TO_COLORS = {'ATL': 0xE03A3E, 'BOS': 0x007A33, 'CLE': 0x860038,
+                  'NOP': 0x85714D, 'CHI': 0xCE1141, 'DAL': 0x00538C,
+                  'DEN': 0xFEC524, 'GSW': 0xFFC72C, 'HOU': 0xCE1141,
+                  'LAC': 0xBEC0C2, 'LAL': 0x552583, 'MIA': 0x98002E,
+                  'MIL': 0x00471B, 'MIN': 0x0C2340, 'BKN': 0x000000,
+                  'NYK': 0xF58426, 'ORL': 0xC4CED4, 'IND': 0x002D62,
+                  'PHI': 0x006BB6, 'PHX': 0x1D1160, 'POR': 0xE03A3E,
+                  'SAC': 0x5A2D81, 'SAS': 0xC4CED4, 'OKC': 0x007AC1,
+                  'TOR': 0xCE1141, 'UTA': 0x002B5C, 'MEM': 0x5D76A9,
+                  'WAS': 0x002B5C, 'DET': 0xC8102E, 'CHA': 0x00788C}

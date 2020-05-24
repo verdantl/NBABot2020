@@ -1,0 +1,8 @@
+discord
+nba_api
+dotenv
+dateparser
+datetime
+requests
+bs4
+
