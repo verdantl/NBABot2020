@@ -211,6 +211,23 @@ async def on_ready():
 
 
 @bot.command()
+async def pull(ctx):
+    """Shows a random player from the current season."""
+    random_player = ACTIVE_PLAYER_LIST[random.randint(0,
+                                                      len(ACTIVE_PLAYER_LIST - 1))]
+    df_log = load_player_dataframe(random_player, '2019', 'Regular')
+    team_abb, team_name = season_helper(random_player, '2019', df_log)
+    statistics = {'GP': str(len(df_log))}
+    statistics.update(avg_values(df_log))
+    embed = embed_creator(('2019-2020 Season',
+                           ','.join([random_player['full_name'],
+                                     team_name.upper()]),
+                           TEAM_TO_COLORS[team_abb]),
+                          None, find_picture('player', random_player['id']),
+                          statistics)
+    await ctx.send(embed=embed)
+
+@bot.command()
 async def player(ctx):
     """Shows commands that can access player statistics."""
     embed = discord.Embed(title='Player Help', description='This is the player '
