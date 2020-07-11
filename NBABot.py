@@ -240,11 +240,11 @@ async def player(ctx):
                           "You should put the starting year of the season, e.g."
                           " 2018 for the 2018-2019 season.\n"
                           "Example: **!season james harden 2018 playoffs**")
-    embed.add_field(name='**!last_game**',
-                    value='Use **!last_game** followed by the player name to '
-                          "display a player\'s last game matchup, points and "
-                          "minutes.\n"
-                          "Example: **!last_game kobe bryant**")
+    # embed.add_field(name='**!last_game**',
+    #                 value='Use **!last_game** followed by the player name to '
+    #                       "display a player\'s last game matchup, points and "
+    #                       "minutes.\n"
+    #                       "Example: **!last_game kobe bryant**")
     embed.add_field(name='**!career**',
                     value='Use **!career** followed by the player name to '
                           "display a player\'s stats over their career.\n"
@@ -360,38 +360,38 @@ async def career(ctx, *args):
         await ctx.send(embed=embed)
 
 
-@bot.command()
-async def last_game(ctx, first_name, last_name):
-    """Shows the player stats for their last game, along with the date and
-    against which team."""
-    nba_player = find_player(first_name, last_name, PLAYER_LIST)
-    if nba_player is None:
-        await ctx.send('The player you asked for does not exist in the '
-                       'database.')
-    else:
-        df_player = load_player_dataframe(nba_player, SeasonAll.all, 'Regular')
-        game = df_player.iloc[0, :]
-        year = str(game.SEASON_ID[1:])
-        game_df = get_game_df(year)
-        game_log = game_df[game_df.GAME_ID == game.Game_ID]
-        team_name = [team['full_name'] for team in TEAM_LIST if
-                     team['abbreviation'] == df_player.MATCHUP[0][0:3]][0]
-
-        for i in range(len(game_log)):
-            temp = game_log.iloc[i, :]
-            if temp.TEAM_NAME == team_name:
-                first = temp.PTS
-            else:
-                second = temp.PTS
-        info = ('Last Game: **' + nba_player['full_name'] + '**', ', '.join(
-            [df_player.MATCHUP[0], df_player.GAME_DATE[0]]), TEAM_TO_COLORS[
-                    df_player.MATCHUP[0][0:3]])
-        fields = {'POINTS': df_player.PTS[0], 'MINUTES': df_player.MIN[0],
-                  'SCORE': '-'.join([str(first), str(second)])}
-        url = find_picture('player', nba_player['id'])
-        embed = embed_creator(info, url, None, fields)
-
-        await ctx.send(embed=embed)
+# @bot.command()
+# async def last_game(ctx, first_name, last_name):
+#     """Shows the player stats for their last game, along with the date and
+#     against which team."""
+#     nba_player = find_player(first_name, last_name, PLAYER_LIST)
+#     if nba_player is None:
+#         await ctx.send('The player you asked for does not exist in the '
+#                        'database.')
+#     else:
+#         df_player = load_player_dataframe(nba_player, SeasonAll.all, 'Regular')
+#         game = df_player.iloc[0, :]
+#         year = str(game.SEASON_ID[1:])
+#         game_df = get_game_df(year)
+#         game_log = game_df[game_df.GAME_ID == game.Game_ID]
+#         team_name = [team['full_name'] for team in TEAM_LIST if
+#                      team['abbreviation'] == df_player.MATCHUP[0][0:3]][0]
+#
+#         for i in range(len(game_log)):
+#             temp = game_log.iloc[i, :]
+#             if temp.TEAM_NAME == team_name:
+#                 first = temp.PTS
+#             else:
+#                 second = temp.PTS
+#         info = ('Last Game: **' + nba_player['full_name'] + '**', ', '.join(
+#             [df_player.MATCHUP[0], df_player.GAME_DATE[0]]), TEAM_TO_COLORS[
+#                     df_player.MATCHUP[0][0:3]])
+#         fields = {'POINTS': df_player.PTS[0], 'MINUTES': df_player.MIN[0],
+#                   'SCORE': '-'.join([str(first), str(second)])}
+#         url = find_picture('player', nba_player['id'])
+#         embed = embed_creator(info, url, None, fields)
+#
+#         await ctx.send(embed=embed)
 
 
 @bot.command()
