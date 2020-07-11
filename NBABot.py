@@ -31,8 +31,8 @@ bot = Bot(command_prefix=BOT_PREFIX)
 def get_game_df():
     return leaguegamelog.LeagueGameLog(direction='DESC').get_data_frames()[0]
 
-
-GAME_DF = get_game_df()
+#
+# GAME_DF = get_game_df()
 
 
 def playoff_verification(playoff: str) -> str:
