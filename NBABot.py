@@ -12,7 +12,7 @@ from nba_api.stats.endpoints import playergamelog, drafthistory, \
 from nba_api.stats.library.parameters import SeasonAll, Season
 from nba_api.stats.static import players, teams
 from pandas import DataFrame
-
+import random
 from team_colors import TEAM_TO_COLORS
 
 BOT_PREFIX = "#"
