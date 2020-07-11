@@ -6,4 +6,5 @@ datetime
 requests==2.24.0
 bs4
 pandas==1.0.5
+random
 

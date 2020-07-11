@@ -15,7 +15,7 @@ from pandas import DataFrame
 
 from team_colors import TEAM_TO_COLORS
 
-BOT_PREFIX = "!"
+BOT_PREFIX = "#"
 YEAR = str(datetime.now().year)
 ACTIVE_PLAYER_LIST = players.get_active_players()
 PLAYER_LIST = players.get_players()
