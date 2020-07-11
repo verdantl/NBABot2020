@@ -4,6 +4,6 @@ python-dotenv==0.10.3
 dateparser==0.7.6
 datetime
 requests==2.24.0
-bs4==4.9.1
+bs4
 pandas==1.0.5
 
