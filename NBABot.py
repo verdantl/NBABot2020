@@ -28,9 +28,8 @@ CHANNEL_ID = os.getenv('CHANNEL_ID')
 bot = Bot(command_prefix=BOT_PREFIX)
 
 
-def get_game_df(season=Season.default):
-    return leaguegamelog.LeagueGameLog(direction='DESC',
-                                       season=season).get_data_frames()[0]
+def get_game_df():
+    return leaguegamelog.LeagueGameLog(direction='DESC').get_data_frames()[0]
 
 
 GAME_DF = get_game_df()
