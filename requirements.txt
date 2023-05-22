@@ -3,6 +3,6 @@ nba_api==1.1.8
 python-dotenv==0.10.3
 dateparser==0.7.6
 datetime
-requests==2.24.0
+requests==2.31.0
 bs4
 pandas==1.0.5
